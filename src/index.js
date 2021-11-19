@@ -41,10 +41,11 @@ const countryInfoItem = (filtredArr) => {
     
 
 function onSearch(event) {
-    if (event.target.value !== "") {
+    const string = event.target.value.trim();
+    if (string !== "") {
     fetchCountries(event.target.value).then(data => {
         console.log(data)
-        if (data.length > 2 && data.length < 10) {
+        if (data.length >= 2 && data.length <= 10) {
             const filtredData = data.filter(el => el.name.toLowerCase().includes(event.target.value.toLowerCase()));
             counterListItem(filtredData);
         } else if (data.length === 1) {
