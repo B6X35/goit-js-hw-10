@@ -43,13 +43,13 @@ const countryInfoItem = (filtredArr) => {
 function onSearch(event) {
     const string = event.target.value.trim();
     if (string !== "") {
-    fetchCountries(event.target.value).then(data => {
+    fetchCountries(string).then(data => {
         console.log(data)
         if (data.length >= 2 && data.length <= 10) {
-            const filtredData = data.filter(el => el.name.toLowerCase().includes(event.target.value.toLowerCase()));
+            const filtredData = data.filter(el => el.name.toLowerCase().includes(string.toLowerCase()));
             counterListItem(filtredData);
         } else if (data.length === 1) {
-            const filtredData = data.filter(el => el.name.toLowerCase().includes(event.target.value.toLowerCase()));
+            const filtredData = data.filter(el => el.name.toLowerCase().includes(string.toLowerCase()));
             countryInfoItem(filtredData);
         } else if (data.length > 10){
             clear();
